@@ -93,7 +93,7 @@ public class PTTMapperService extends Service {
     private Notification createServiceNotification() {
         // Create Variables
         String channelId = "com.zebra.pttmapper.crosscall";
-        String channelName = "Hytera PTT Mapper Service Interface Channel";
+        String channelName = "Crosscall PTT Mapper Service Interface Channel";
 
         // Create Channel
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
