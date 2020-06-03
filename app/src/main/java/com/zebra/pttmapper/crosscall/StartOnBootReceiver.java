@@ -1,5 +1,11 @@
 package com.zebra.pttmapper.crosscall;
 
+/*
+Original Source Code from James Swinton Blade:
+        https://github.com/JamesSwinton/HyteraPTTMapper.git
+        https://jamesswinton.com
+ */
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;

@@ -1,3 +1,8 @@
+Original Source Code from James Swinton Blade:
+https://github.com/JamesSwinton/HyteraPTTMapper.git
+https://jamesswinton.com
+
+
 # END USER LICENSE AGREEMENT (UNRESTRICTED SOFTWARE)
 
 
