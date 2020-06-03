@@ -1,7 +1,7 @@
 package com.zebra.pttmapper.crosscall;
 
 /*
-Original Source Code from James Swinton Blade:
+Original Source Code from James Swinton Bland:
         https://github.com/JamesSwinton/HyteraPTTMapper.git
         https://jamesswinton.com
  */
