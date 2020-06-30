@@ -146,13 +146,14 @@ public class PTTMapperService extends Service {
                 int actionKey = intent.getIntExtra(ACTION_KEY, -1);
                 int keycode = intent.getIntExtra(KEYCODE_KEY, -1);
 
-                if (keycode == PTT_KEYCODE) {
+                //if (keycode == PTT_KEYCODE)
+                //{
                     if (actionKey == KeyEvent.ACTION_DOWN) {
                         sendBroadcast(new Intent(PTT_PRESSED));
                     } else if (actionKey == KeyEvent.ACTION_UP) {
                         sendBroadcast(new Intent(PTT_RELEASED));
                     }
-                }
+                //}
             }
         }
     };
