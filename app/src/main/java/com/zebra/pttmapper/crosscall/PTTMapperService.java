@@ -40,13 +40,14 @@ public class PTTMapperService extends Service {
     // Hytera Intents
     private static final int PTT_KEYCODE = 142;
 
-    /*
-    private static final String KEYEVENT_ACTION_TO_LISTEN_PTT1 =
-            "android.intent.action.FUNCTION_KEY1_SHORT_PRESSED";
-     */
 
-    private static final String KEYEVENT_ACTION_TO_LISTEN_PTT2 =
+    private static final String KEYEVENT_ACTION_TO_LISTEN_PTT2_PRESSED =
             "android.intent.action.FUNCTION_KEY_DOWN_PRESSED";
+
+    private static final String KEYEVENT_ACTION_TO_LISTEN_PTT2_RELEASED =
+            "android.intent.action.FUNCTION_KEY_RELEASED";
+
+
 
     @Override
     public void onCreate() {
@@ -54,8 +55,8 @@ public class PTTMapperService extends Service {
 
         // Register Button Receiver
         IntentFilter hwbuttonIntentFilter = new IntentFilter();
-        //hwbuttonIntentFilter.addAction(KEYEVENT_ACTION_TO_LISTEN_PTT1);
-        hwbuttonIntentFilter.addAction(KEYEVENT_ACTION_TO_LISTEN_PTT2);
+        hwbuttonIntentFilter.addAction(KEYEVENT_ACTION_TO_LISTEN_PTT2_RELEASED);
+        hwbuttonIntentFilter.addAction(KEYEVENT_ACTION_TO_LISTEN_PTT2_PRESSED);
         registerReceiver(customButtonReceiver, hwbuttonIntentFilter);
 
         // Start Service
@@ -134,26 +135,15 @@ public class PTTMapperService extends Service {
     }
 
     private BroadcastReceiver customButtonReceiver = new BroadcastReceiver() {
-
-        // Intent Extra Keys
-        private static final String ACTION_KEY = "action";
-        private static final String KEYCODE_KEY = "keycode";
-
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (action != null && (/*action.equals(KEYEVENT_ACTION_TO_LISTEN_PTT1) ||*/ action.equals(KEYEVENT_ACTION_TO_LISTEN_PTT2))) {
-                int actionKey = intent.getIntExtra(ACTION_KEY, -1);
-                int keycode = intent.getIntExtra(KEYCODE_KEY, -1);
-
-                //if (keycode == PTT_KEYCODE)
-                //{
-                    if (actionKey == KeyEvent.ACTION_DOWN) {
-                        sendBroadcast(new Intent(PTT_PRESSED));
-                    } else if (actionKey == KeyEvent.ACTION_UP) {
-                        sendBroadcast(new Intent(PTT_RELEASED));
-                    }
-                //}
+            if (action != null && (action.equals(KEYEVENT_ACTION_TO_LISTEN_PTT2_PRESSED))) {
+                sendBroadcast(new Intent(PTT_PRESSED));
+            }
+            else if(action != null && action.equals(KEYEVENT_ACTION_TO_LISTEN_PTT2_RELEASED))
+            {
+                sendBroadcast(new Intent(PTT_RELEASED));
             }
         }
     };
